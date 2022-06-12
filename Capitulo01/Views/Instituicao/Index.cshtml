@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Capitulo01.Models.Instituicao>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listagem</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Criar nova instituição</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "Edit", new { id=item.InstituicaoId }) |
+                @Html.ActionLink("Mais detalhes", "Details", new { id=item.InstituicaoId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.InstituicaoId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
